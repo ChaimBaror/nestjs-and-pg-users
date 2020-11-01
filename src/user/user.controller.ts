@@ -9,43 +9,30 @@ import { UserEntity } from './entities/user.entity';
 export class UserController {
 
   constructor(private readonly userService: UserService) {}
-  
 
-  @Post('/sign')
-  async signup(@Body() createUserDto: CreateUserDto){
-    const user = await this.userService.create(createUserDto);
-
-  }
-   
- 
-  @Post('/login')
+  @Post()
   @UsePipes(ValidationPipe)
-  login(@Body() loginDto: CreateUserDto){
-    console.log(`${loginDto} this loggin`);
-    
-    return this.userService.login(loginDto);
-    
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.userService.create(createUserDto);
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.userService.findOne(+id);
-  // }
-  // @Post('/status')
-  // create(@Res() res: Response) {
-  //   res.status(HttpStatus.OK).json([res]);
-  // }
+  @Get()
+  findAll() {
+    return this.userService.findAll();
+  }
 
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.userService.findOne(+id);
+  }
 
-  // @Get()
-  // async findAll(): Promise<UserEntity[]> {
-  //   return this.userService.findAll();
-  // }
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(+id, updateUserDto);
+  }
 
- 
-
-  // @Delete(':id')
-  // remove(@Param('id', ParseIntPipe ) id: number) {
-  //   return this.userService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.userService.remove(+id);
+  }
 }

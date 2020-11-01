@@ -1,50 +1,42 @@
 import { Injectable } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
-import { EventsRepository } from './dto/events.repositry';
 import { InjectRepository } from '@nestjs/typeorm'
 import { CreateUserDto } from './dto/create-user.dto';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
 
-  constructor(@InjectRepository(EventsRepository) private eventsRepository: EventsRepository){}
-  
+  constructor( @InjectRepository(UserEntity)private usersRepository: Repository<UserEntity>,) {}
   create(createUserDto: CreateUserDto) {
-    this.eventsRepository.createEvent(createUserDto);
+    const {name, email, password } = createUserDto
+    const user = new UserEntity()
+    user.name = name;
+    user.email = email;
+    user.password = password;
+   
+    return this.usersRepository.save(user);
+    // return this.users
   }
 
-  async findAll(): Promise<UserEntity[]> {
-    return this.eventsRepository.find()
+  findAll() {
+    return this.usersRepository.find();
+    // return this.users;
   }
 
-  async remove(id: string): Promise<void> {
-    await this.eventsRepository.delete(id);
+  findOne(id: number) {
+    return this.usersRepository.findOne(id);
+    // return this.users.find(user => user.id === id)
   }
 
-
-  // signup(req) {
-  //   console.log(req);
-  //   const { email, password } = req.body;
-  //   return 'This req adds a new user';
-
-  // }
-  login(user) {
-    const { email, password } = user;
-  
-    return { email, password }
+  update(id: number, updateUserDto: UpdateUserDto) {
+    return `This action updates a #${id} user`;
   }
 
+  async  remove(id: number) {
+    await this.usersRepository.delete(id);
+    // return `This action removes a #${id} user`;
+  }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} user`;
-  // }
-
-  // update(id: number, updateUserDto: UpdateUserDto) {
-  //   return `This action updates a #${id} user`;
-  // }
-
-  // remove(id: number) {
-  //   return `This action removes a #${id} user`;
-  // }
 }
