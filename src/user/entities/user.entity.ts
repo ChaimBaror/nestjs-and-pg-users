@@ -20,5 +20,9 @@ export class UserEntity {
         async hashPassword() {
           this.password = await bcrypt.hash(this.password, 10);
         }
+
+        async comparePassword(attempt: string): Promise<boolean> {
+            return await bcrypt.compare(attempt, this.password);
+          }
 }
 
