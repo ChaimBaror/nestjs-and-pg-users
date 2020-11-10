@@ -1,15 +1,17 @@
-import {Entity, PrimaryGeneratedColumn, Column, BeforeInsert} from 'typeorm'
+import {Entity, PrimaryGeneratedColumn, Column, BeforeInsert, Unique} from 'typeorm'
 import * as bcrypt from 'bcrypt';
 //event model
+
 @Entity()
+@Unique(['email'])
 export class UserEntity {
     
         @PrimaryGeneratedColumn()
         id: string | number
     
         @Column()
-        name?: string
-    
+        username?: string
+
         @Column()
         password: string
     

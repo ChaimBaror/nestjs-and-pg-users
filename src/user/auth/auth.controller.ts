@@ -1,14 +1,10 @@
 import { Body, Response, Controller, Post, HttpStatus, Get, Param } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
-import { UserService } from '../user.service';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
-    constructor(
-        private readonly authService: AuthService,
-        private readonly usersService: UserService,
-      ) {}
+    constructor( private readonly authService: AuthService ) {}
 
       @Get()
       validateUser(@Body() user: CreateUserDto) {

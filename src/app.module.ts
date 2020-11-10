@@ -14,15 +14,26 @@ import { UserMiddleware } from './Middleware/user.middleware';
     // ConfigModule.forRoot({ envFilePath: '.development.env', }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      // url:process.env.MY_URL,
-      url:'postgres://svgdxyou:Y_LYIADsPdgphb2aZ_MzZFBGC3vtGYYr@kandula.db.elephantsql.com:5432/svgdxyou' ,
-      autoLoadEntities: true,
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: "1q2w3e4r",
+      database: 'usersDB',
       synchronize: true,
       entities: [UserEntity],
     }),
+    //   TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   // url:process.env.MY_URL,
+    //   url:'postgres://svgdxyou:Y_LYIADsPdgphb2aZ_MzZFBGC3vtGYYr@kandula.db.elephantsql.com:5432/svgdxyou' ,
+    //   autoLoadEntities: true,
+    //   synchronize: true,
+    //   entities: [UserEntity],
+    // }),
     UserModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [ 
+    AppService],
 })
 
 export class AppModule {

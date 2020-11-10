@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, Req, HttpCode, Res, HttpStatus, ValidationPipe, UsePipes, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, Req, HttpCode, Res, HttpStatus, ValidationPipe, UsePipes, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Response } from 'express';
 import { UserEntity } from './entities/user.entity';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('user')
 export class UserController {
@@ -13,11 +14,14 @@ export class UserController {
   }
 
   @Post()
-  @UsePipes(ValidationPipe)
+  // @UsePipes(ValidationPipe)
   create(@Body() createUserDto: CreateUserDto) {
+    console.log('createUserDto',createUserDto);
+    
     return this.userService.create(createUserDto);
   }
-
+  
+  @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.userService.findAll();

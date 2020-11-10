@@ -12,7 +12,7 @@ export class UserService {
   create(createUserDto: CreateUserDto) {
     const {username: name, email, password } = createUserDto
     const user = new UserEntity()
-    user.name = name;
+    user.username = name;
     user.email = email;
     user.password = password;
    
