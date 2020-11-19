@@ -46,7 +46,7 @@ export class UserService {
     // return this.users;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.usersRepository.findOne(id);
     // return this.users.find(user => user.id === id)
   }
@@ -55,9 +55,9 @@ export class UserService {
     return `This action updates a #${id} user`;
   }
 
-  async  remove(id: number) {
+  async  remove(id: string) {
     await this.usersRepository.delete(id);
-    // return `This action removes a #${id} user`;
+    return `This action removes a #${id} user`;
   }
 
 }

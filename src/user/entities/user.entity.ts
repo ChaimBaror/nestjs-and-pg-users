@@ -1,30 +1,37 @@
-import {Entity, PrimaryGeneratedColumn, Column, BeforeInsert, Unique} from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, Unique, OneToMany, OneToOne, JoinColumn } from 'typeorm'
 import * as bcrypt from 'bcrypt';
+import Products from './product.entity';
 //event model
 
 @Entity()
-@Unique(['email'])
+// @Unique(['email'])
 export class UserEntity {
-    
-        @PrimaryGeneratedColumn()
-        id: string | number
-    
-        @Column()
-        username?: string
 
-        @Column()
-        password: string
-    
-        @Column()
-        email: string
-    
-        @BeforeInsert()
-        async hashPassword() {
-          this.password = await bcrypt.hash(this.password, 10);
-        }
+  @PrimaryGeneratedColumn("uuid")
+  id: string | number
 
-        async comparePassword(attempt: string): Promise<boolean> {
-            return await bcrypt.compare(attempt, this.password);
-          }
+  @Column()
+  username?: string
+
+  @Column()
+  password: string
+
+  @Column({ unique: true })
+  email: string
+
+
+  @OneToOne(() => Products)
+  @JoinColumn()
+  public products: Products;
+  // products: Products;
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+
+  async comparePassword(attempt: string): Promise<boolean> {
+    return await bcrypt.compare(attempt, this.password);
+  }
 }
 

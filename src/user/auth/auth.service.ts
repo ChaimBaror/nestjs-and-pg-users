@@ -24,7 +24,7 @@ export class AuthService {
             }
             // if (user && user.password === password) {
             const { password, ...result } = user;
-            console.log("is work ", result);
+            // console.log("is work ", result);
 
             return result;
         }

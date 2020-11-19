@@ -5,8 +5,7 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './user/entities/user.entity';
 import { UserMiddleware } from './Middleware/user.middleware';
-
-
+import Products from './user/entities/product.entity';
 
 
 @Module({
@@ -19,8 +18,9 @@ import { UserMiddleware } from './Middleware/user.middleware';
       username: 'postgres',
       password: "1q2w3e4r",
       database: 'usersDB',
+      // database: 'uDB',
       synchronize: true,
-      entities: [UserEntity],
+      entities: [UserEntity,Products],
     }),
     //   TypeOrmModule.forRoot({
     //   type: 'postgres',
