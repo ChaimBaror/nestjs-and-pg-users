@@ -4,21 +4,34 @@ import { UserEntity } from "./user.entity";
 
 
 @Entity()
-class Products {
+class ProductsEntity {
   @PrimaryGeneratedColumn()
   public id: number;
  
   @Column()
-  public name: string;
+  category: string;
+
  
   @Column()
   public price: string;
  
   @Column()
-  public country: string;
+    image: string;
+
+    @Column()
+    nameProduct: string;
+
+    @Column()
+    message: string;
+
+    @Column()
+    tineEnd: string;
+
+    @Column({ default: true})
+    isActive: boolean;
 
   @OneToOne(() => UserEntity, (user: UserEntity) => user.products)
   public user: UserEntity;
 }
  
-export default Products;
+export default ProductsEntity;

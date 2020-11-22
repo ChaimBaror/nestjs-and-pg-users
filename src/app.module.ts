@@ -5,7 +5,8 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './user/entities/user.entity';
 import { UserMiddleware } from './Middleware/user.middleware';
-import Products from './user/entities/product.entity';
+import ProductsEntity from './user/entities/product.entity';
+import { ProductModule } from './product/product.module';
 
 
 @Module({
@@ -20,7 +21,7 @@ import Products from './user/entities/product.entity';
       database: 'usersDB',
       // database: 'uDB',
       synchronize: true,
-      entities: [UserEntity,Products],
+      entities: [UserEntity,ProductsEntity],
     }),
     //   TypeOrmModule.forRoot({
     //   type: 'postgres',
@@ -30,10 +31,9 @@ import Products from './user/entities/product.entity';
     //   synchronize: true,
     //   entities: [UserEntity],
     // }),
-    UserModule],
+    UserModule,ProductModule],
   controllers: [AppController],
-  providers: [ 
-    AppService],
+  providers: [ AppService],
 })
 
 export class AppModule {

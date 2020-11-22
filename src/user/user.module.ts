@@ -9,11 +9,11 @@ import { AuthModule } from './auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { APP_GUARD } from '@nestjs/core';
-import Products from './entities/product.entity';
+import ProductsEntity from './entities/product.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([UserEntity,Products]),
+    TypeOrmModule.forFeature([UserEntity,ProductsEntity]),
     JwtModule.register({
       secret: 'hard! secret chaim baror',
       signOptions: { expiresIn: '60m' }

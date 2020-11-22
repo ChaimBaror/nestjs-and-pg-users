@@ -1,4 +1,7 @@
 import{ IsEmail, IsNotEmpty, IsOptional, Length }from 'class-validator'
+import { NewType } from '../entities/user.entity';
+
+
 
 export class CreateUserDto {
     @Length(2, 10)
@@ -17,6 +20,16 @@ export class CreateUserDto {
 
     @IsEmail()
     email: string;
- 
-    accessToken ?:string
+
+    @IsOptional()
+    phone: string;
+
+    @IsOptional()
+    img:string;
+
+    @IsOptional()
+    role:NewType;
+
+    @IsOptional()
+    accessToken :string
 }

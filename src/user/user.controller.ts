@@ -1,5 +1,7 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, ValidationPipe, UsePipes,
-    UseGuards, UseInterceptors, Request } from '@nestjs/common';
+import {
+  Controller, Get, Post, Body, Put, Param, Delete, ValidationPipe, UsePipes,
+  UseGuards, UseInterceptors, Request
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -16,15 +18,15 @@ export class UserController {
   @Post()
   @UsePipes(ValidationPipe)
   create(@Body() createUserDto: CreateUserDto) {
-    console.log('createUserDto',createUserDto);
+    console.log('createUserDto', createUserDto);
     return this.userService.create(createUserDto);
   }
-  
+
   @UseGuards(AuthGuard)
   @Get()
-  findAll(@Request() req){
+  findAll(@Request() req) {
     console.log(req.headers);
-    
+
     return this.userService.findAll();
   }
 
@@ -33,14 +35,14 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
-  @Put(':id')
+  @Post(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
+    return this.userService.update(id, updateUserDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    console.log("remove" ,id);
+    console.log("remove", id);
     return this.userService.remove(id);
   }
 }

@@ -1,7 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, Unique, OneToMany, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, Unique, OneToMany, OneToOne, JoinColumn, Admin } from 'typeorm'
 import * as bcrypt from 'bcrypt';
-import Products from './product.entity';
+import ProductsEntity from './product.entity';
 //event model
+
+  
+
+export type NewType = "user" | "Admin" ;
 
 @Entity()
 // @Unique(['email'])
@@ -11,7 +15,17 @@ export class UserEntity {
   id: string | number
 
   @Column()
-  username?: string
+  username: string
+  @Column({ nullable: true })
+  firstName: string;
+  @Column({ nullable: true })
+  lastName: string;
+  @Column({ nullable: true })
+  phone: string;
+  @Column({ nullable: true })
+  img: string;
+  @Column({ default: "user"})
+  role: NewType
 
   @Column()
   password: string
@@ -20,9 +34,9 @@ export class UserEntity {
   email: string
 
 
-  @OneToOne(() => Products)
+  @OneToOne(() => ProductsEntity)
   @JoinColumn()
-  public products: Products;
+  public products: ProductsEntity;
   // products: Products;
 
   @BeforeInsert()

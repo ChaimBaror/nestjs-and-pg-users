@@ -4,16 +4,22 @@ import { UserEntity } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm'
 import { CreateUserDto } from './dto/create-user.dto';
 import { Repository } from 'typeorm';
+import { string } from 'yargs';
 
 @Injectable()
 export class UserService {
 
   constructor( @InjectRepository(UserEntity)private usersRepository: Repository<UserEntity>,) {}
   create(createUserDto: CreateUserDto) {
-    const {username: name, email, password } = createUserDto
+    const {username: name, email, password ,firstName, lastName,phone,img,role} = createUserDto
     const user = new UserEntity()
     user.username = name;
     user.email = email;
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.phone = phone;
+    user.img = img;
+    user.role = role;
     user.password = password;
    
     return this.usersRepository.save(user);
@@ -51,13 +57,13 @@ export class UserService {
     // return this.users.find(user => user.id === id)
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+ async update(id: string, updateUserDto: UpdateUserDto) {
+    return this.usersRepository.save({ ...updateUserDto, id: id });
+ 
   }
 
   async  remove(id: string) {
     await this.usersRepository.delete(id);
-    return `This action removes a #${id} user`;
   }
 
 }
