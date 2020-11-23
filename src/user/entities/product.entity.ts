@@ -6,7 +6,7 @@ import { UserEntity } from "./user.entity";
 @Entity()
 class ProductsEntity {
   @PrimaryGeneratedColumn()
-  public id: number;
+  public id: string;
  
   @Column()
   category: string;

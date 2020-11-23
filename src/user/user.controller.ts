@@ -1,6 +1,6 @@
 import {
   Controller, Get, Post, Body, Put, Param, Delete, ValidationPipe, UsePipes,
-  UseGuards, UseInterceptors, Request
+  UseGuards, UseInterceptors, Request, Patch
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -16,7 +16,7 @@ export class UserController {
   }
 
   @Post()
-  @UsePipes(ValidationPipe)
+  // @UsePipes(ValidationPipe)
   create(@Body() createUserDto: CreateUserDto) {
     console.log('createUserDto', createUserDto);
     return this.userService.create(createUserDto);
@@ -35,7 +35,7 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
-  @Post(':id')
+  @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(id, updateUserDto);
   }
