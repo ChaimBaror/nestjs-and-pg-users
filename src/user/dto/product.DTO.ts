@@ -1,10 +1,14 @@
+import { IsNotEmpty } from "class-validator";
+
 export class ProductsDTO {
     category?: string;
     id: string;
     image: string;
+    @IsNotEmpty()
     nameProduct: string;
     message: string;
     tineEnd?: any;
+    
     price:  string;
     auction?: AuctionDTO[];
     isActive?: boolean;

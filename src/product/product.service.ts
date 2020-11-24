@@ -11,7 +11,7 @@ export class ProductService {
 
     constructor(@InjectRepository(ProductsEntity) private repository: Repository<ProductsEntity>, ) { }
     create(ProductsDTO: ProductsDTO) {
-        const { nameProduct, category, price, isActive,image,message,tineEnd } = ProductsDTO
+        const { nameProduct, category, price, isActive, image, message, tineEnd } = ProductsDTO
 
         const product = new ProductsEntity()
         product.nameProduct = nameProduct;
@@ -31,6 +31,10 @@ export class ProductService {
 
     async update(id: string, updateProDto: UpdateProductDto) {
         return this.repository.save({ ...updateProDto, id: id });
-     
-      }
+
+    }
+    async  remove(id: string) {
+        await this.repository.delete(id);
+
+    }
 }
