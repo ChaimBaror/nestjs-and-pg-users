@@ -29,6 +29,10 @@ export class ProductService {
         return this.repository.find();
     }
 
+    findOne(id: string) {
+        return this.repository.findOne(id);
+      }
+
     async update(id: string, updateProDto: UpdateProductDto) {
         return this.repository.save({ ...updateProDto, id: id });
 

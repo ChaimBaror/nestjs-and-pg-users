@@ -23,6 +23,11 @@ export class ProductController {
       return this.ProductService.findAll();
     }
 
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+      return this.ProductService.findOne(id);
+    }
+
     @Patch(':id')
   update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
     return this.ProductService.update(id, updateProductDto);
