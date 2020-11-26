@@ -25,7 +25,7 @@ class ProductsEntity {
     message: string;
 
     @Column()
-    tineEnd: string;
+    timeEnd: string;
 
     @Column({ default: true})
     isActive: boolean;

@@ -7,7 +7,7 @@ export class ProductsDTO {
     @IsNotEmpty()
     nameProduct: string;
     message: string;
-    tineEnd?: any;
+    timeEnd?: any;
     
     price:  string;
     auction?: AuctionDTO[];

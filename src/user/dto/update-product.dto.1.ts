@@ -20,7 +20,7 @@ export class UpdateProductDto extends PartialType(ProductsDTO) {
     message: string;
 
     @IsOptional()
-    tineEnd?: any;
+    timeEnd?: any;
 
     @IsOptional()
     price:  any;

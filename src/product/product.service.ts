@@ -11,7 +11,7 @@ export class ProductService {
 
     constructor(@InjectRepository(ProductsEntity) private repository: Repository<ProductsEntity>, ) { }
     create(ProductsDTO: ProductsDTO) {
-        const { nameProduct, category, price, isActive, image, message, tineEnd } = ProductsDTO
+        const { nameProduct, category, price, isActive, image, message, timeEnd: tineEnd } = ProductsDTO
 
         const product = new ProductsEntity()
         product.nameProduct = nameProduct;
@@ -19,7 +19,7 @@ export class ProductService {
         product.price = price;
         product.image = image;
         product.message = message;
-        product.tineEnd = tineEnd;
+        product.timeEnd = tineEnd;
         product.isActive = isActive;
 
         return this.repository.save(product);
