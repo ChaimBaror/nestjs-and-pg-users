@@ -7,6 +7,7 @@ import { UserEntity } from './user/entities/user.entity';
 import { UserMiddleware } from './Middleware/user.middleware';
 import ProductsEntity from './user/entities/product.entity';
 import { ProductModule } from './product/product.module';
+import { GoogleStrategy } from './GoogleStrategy ';
 
 
 @Module({
@@ -33,7 +34,7 @@ import { ProductModule } from './product/product.module';
     // }),
     UserModule,ProductModule],
   controllers: [AppController],
-  providers: [ AppService],
+  providers: [ AppService,GoogleStrategy],
 })
 
 export class AppModule {
