@@ -6,7 +6,6 @@ import { ProductsDTO } from './product.DTO';
 export class UpdateProductDto extends PartialType(ProductsDTO) {
 
   
-
     @IsOptional()
     category?: string;
 
@@ -27,7 +26,5 @@ export class UpdateProductDto extends PartialType(ProductsDTO) {
 
     @IsOptional()
     isActive?: boolean;
-
-   
 
 }
