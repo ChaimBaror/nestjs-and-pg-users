@@ -8,17 +8,29 @@ import { UserMiddleware } from './Middleware/user.middleware';
 import ProductsEntity from './user/entities/product.entity';
 import { ProductModule } from './product/product.module';
 import { GoogleStrategy } from './GoogleStrategy ';
+import { ConfigModule } from '@nestjs/config/dist/config.module';
+import { ServeStaticModule } from '@nestjs/serve-static/dist/serve-static.module';
+import { join } from 'path';
 
 
 @Module({
   imports: [
-    // ConfigModule.forRoot({ envFilePath: '.development.env', }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url:"postgres://mbytudqvtldqxk:8ec951398a55c1f3c659c2b81443b5499b67e8e2b803cac43f1dedb1131087e5@ec2-52-208-138-246.eu-west-1.compute.amazonaws.com:5432/d4i2j3jr7lfubh",
-      synchronize: true,
-      entities: [UserEntity,ProductsEntity],
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
     }),
+    // ConfigModule.forRoot({ envFilePath: '.development.env', }),
+
+    //DB dashboard.heroku
+
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   url:"postgres://mbytudqvtldqxk:8ec951398a55c1f3c659c2b81443b5499b67e8e2b803cac43f1dedb1131087e5@ec2-52-208-138-246.eu-west-1.compute.amazonaws.com:5432/d4i2j3jr7lfubh",
+    //   synchronize: true,
+    //   entities: [UserEntity,ProductsEntity],
+    // }),
+
+//DB localhost
+
     // TypeOrmModule.forRoot({
     //   type: 'postgres',
     //   host: 'localhost',
@@ -30,18 +42,22 @@ import { GoogleStrategy } from './GoogleStrategy ';
     //   synchronize: true,
     //   entities: [UserEntity,ProductsEntity],
     // }),
-    //   TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   // url:process.env.MY_URL,
-    //   url:'postgres://svgdxyou:Y_LYIADsPdgphb2aZ_MzZFBGC3vtGYYr@kandula.db.elephantsql.com:5432/svgdxyou' ,
-    //   autoLoadEntities: true,
-    //   synchronize: true,
-    //   entities: [UserEntity],
-    // }),
-    UserModule,ProductModule],
+
+
+    //DB api.elephantsql.com
+    ConfigModule.forRoot({ envFilePath: '.development.env', }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      url:'postgres://ptrdmhfp:jvXE6XBraOP3u4M_PtbJXUXCtry8UoFh@kandula.db.elephantsql.com:5432/ptrdmhfp' ,
+      autoLoadEntities: true,
+      synchronize: true,
+      entities: [UserEntity,ProductsEntity],
+    }),UserModule,ProductModule],
   controllers: [AppController],
   providers: [ AppService,GoogleStrategy],
 })
+
+
 
 export class AppModule {
 
