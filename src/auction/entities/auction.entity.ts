@@ -1,15 +1,18 @@
+
 import { Column, PrimaryGeneratedColumn, Entity } from "typeorm";
 
 @Entity()
 export class AuctionEntity {
-  @PrimaryGeneratedColumn("uuid")
-  id: string | number
-  @Column()
-    pruductId: string;
+
+
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
     @Column()
     userId: string;
     @Column()
-    price: number;
+    pruductId: string;
+    @Column()
+    price: string;
     @Column()
     username:string;
     @Column()

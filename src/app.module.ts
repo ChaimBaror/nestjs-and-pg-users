@@ -11,6 +11,8 @@ import { GoogleStrategy } from './GoogleStrategy ';
 import { ConfigModule } from '@nestjs/config/dist/config.module';
 import { ServeStaticModule } from '@nestjs/serve-static/dist/serve-static.module';
 import { join } from 'path';
+import { AuctionModule } from './auction/auction.module';
+import { AuctionEntity } from './auction/entities/auction.entity';
 
 
 @Module({
@@ -51,8 +53,9 @@ import { join } from 'path';
       url:'postgres://ptrdmhfp:jvXE6XBraOP3u4M_PtbJXUXCtry8UoFh@kandula.db.elephantsql.com:5432/ptrdmhfp' ,
       autoLoadEntities: true,
       synchronize: true,
-      entities: [UserEntity,ProductsEntity],
-    }),UserModule,ProductModule],
+      entities: [UserEntity,ProductsEntity,AuctionEntity],
+      
+    }),UserModule,ProductModule, AuctionModule],
   controllers: [AppController],
   providers: [ AppService,GoogleStrategy],
 })
