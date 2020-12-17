@@ -1,15 +1,3 @@
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -5418,7 +5406,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "p", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](43, "\xA9 2020");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](43, "\xA9 - ChaimBaror - 2020");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -5716,7 +5704,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "p", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, " \xA9 2020");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, " \xA9 - ChaimBaror - 2020");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6164,37 +6152,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var src_app_services_products_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var src_app_services_products_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! src/app/services/products.service */
     "./src/app/services/products.service.ts");
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
     /* harmony import */
 
 
-    var src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! src/app/services/loging.service */
     "./src/app/services/loging.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @ng-bootstrap/ng-bootstrap */
     "./node_modules/@ng-bootstrap/ng-bootstrap/__ivy_ngcc__/fesm2015/ng-bootstrap.js");
     /* harmony import */
 
 
-    var _chart_chart_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _chart_chart_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ../chart/chart.component */
     "./src/app/components/chart/chart.component.ts");
 
@@ -6423,7 +6417,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
-    function PageProductsComponent_div_43_Template(rf, ctx) {
+    function PageProductsComponent_div_44_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 24);
 
@@ -6467,33 +6461,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this6 = this;
 
-          this.pageProducts = this.productsSer.getOneProducts(this.activeRoute.snapshot.params.id);
+          this.productsSer.getById(this.activeRoute.snapshot.params.id).subscribe(function (products) {
+            _this6.pageProducts = products;
 
-          if (this.pageProducts.timeEnd) {
-            if (this.pageProducts.timeEnd - Date.now() < 0) {
-              this.pageProducts.isActive = false;
-            } else {
-              this.pageProducts.isActive = true;
-            }
-          } else if (this.pageProducts.timeEnd == null) {
-            this.pageProducts.timeEnd = 2606494960000;
-            this.pageProducts.isActive = true;
-          }
+            if (_this6.pageProducts.timeEnd) {
+              if (_this6.pageProducts.timeEnd - Date.now() < 0) {
+                _this6.pageProducts.isActive = false;
+              } else {
+                _this6.pageProducts.isActive = true;
+              }
+            } // else if (this.pageProducts.timeEnd == null) {
+            //   this.pageProducts.timeEnd = 2606494960000;
+            //   this.pageProducts.isActive = true;
+            // }
 
+
+            _this6.timeOfProduct();
+
+            _this6.getAuction(_this6.pageProducts.id);
+          });
           this.logingSer.getCurrentUser().subscribe(function (user) {
             return _this6.currentUser = Object.assign({}, user);
           });
-          this.timeOfProduct();
-          this.getAuction();
         }
       }, {
         key: "getAuction",
-        value: function getAuction() {
-          this.auctionPruduct = this.productsSer.getAuctionByProductId(this.pageProducts.id);
-          this.auctionPruduct.sort(function (a, b) {
-            return b.price - a.price;
-          });
-          this.pageProducts.price = this.auctionPruduct[0].price;
+        value: function getAuction(pruductId) {
+          var sortById = function sortById(data) {
+            data.sort(function (a, b) {
+              return b.price - a.price;
+            });
+            ;
+          };
+
+          this.auctionPruduct$ = this.productsSer.getAuctionByProductId(pruductId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(sortById)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(sortById)); //  this.productsSer.getAuctionByProductId(pruductId).subscribe((auction:Auction) => {
+          //   this.auctionPruduct = auction;
+          // this.auctionPruduct.sort((a, b) => (b.price) - (a.price));
+          // this.pageProducts.price = this.auctionPruduct[0].price
         }
       }, {
         key: "timeOfProduct",
@@ -6550,7 +6554,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           sum = this.pageProducts.price += sum;
           console.log(id);
           this.productsSer.auctionAdd(id, sum);
-          this.getAuction();
+          this.getAuction(this.pageProducts.id);
         }
       }]);
 
@@ -6558,14 +6562,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     PageProductsComponent.ɵfac = function PageProductsComponent_Factory(t) {
-      return new (t || PageProductsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_products_service__WEBPACK_IMPORTED_MODULE_1__["ProductsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_3__["LogingService"]));
+      return new (t || PageProductsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_4__["LogingService"]));
     };
 
     PageProductsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: PageProductsComponent,
       selectors: [["app-page-products"]],
-      decls: 44,
-      vars: 8,
+      decls: 45,
+      vars: 10,
       consts: [[1, "container"], [1, "row"], [1, "col"], [4, "ngIf"], ["class", "card ", 4, "ngIf"], [1, "col-4"], [1, "navbar", "navbar-expand-lg"], [1, "navbar-nav", "section-nav"], ["type", "button", 1, "badge", "badge-pill", "badge-success", 3, "disabled", "click"], ["type", "button", 1, "badge", "badge-pill", "badge-primary", 3, "click"], ["type", "button", 1, "badge", "badge-pill", "badge-warning", 3, "click"], ["type", "button", 1, "badge", "badge-pill", "badge-danger", 3, "click"], [1, "table", "table-dark"], [1, "brod"], ["scope", "col"], [4, "ngFor", "ngForOf"], ["class", "box", 4, "ngIf"], [1, "card"], [1, "timer"], ["alt", "", "width", "100%", "height", "auto", 1, "img", 3, "src"], [1, "price"], ["routerLink", "/home", "routerLinkActive", "active"], ["routerLink", "/home"], ["scope", "row"], [1, "box"], [2, "color", "red"]],
       template: function PageProductsComponent_Template(rf, ctx) {
         if (rf & 1) {
@@ -6701,7 +6705,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](42, PageProductsComponent_tbody_42_Template, 11, 8, "tbody", 15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](43, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6711,7 +6715,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](43, PageProductsComponent_div_43_Template, 6, 3, "div", 16);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](44, PageProductsComponent_div_44_Template, 6, 3, "div", 16);
         }
 
         if (rf & 2) {
@@ -6733,15 +6739,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.auctionPruduct);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](43, 8, ctx.auctionPruduct$));
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.pageProducts.isActive == false);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbNavbar"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _chart_chart_component__WEBPACK_IMPORTED_MODULE_6__["ChartComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]],
-      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_6__["NgbNavbar"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _chart_chart_component__WEBPACK_IMPORTED_MODULE_7__["ChartComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLink"]],
+      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["AsyncPipe"]],
       styles: [".box[_ngcontent-%COMP%]{\r\n\tposition:absolute;\r\n\tleft:50%;\r\n\ttop:50%;\r\n\ttransform: translate(-50%,-50%);\r\n    background-color: rgba(0, 0, 0, 0.89);\r\n    color: white;\r\n\tborder-radius:3px;\r\n\tpadding:70px 100px;\r\n}\r\n\r\n\r\n\r\n.card[_ngcontent-%COMP%] {\r\n  background:rgb(216, 203, 203);\r\n  transform-style: preserve-3d;\r\n  min-height: 80vh;\r\n  width: 30rem;\r\n  border-radius: 50px;\r\n  padding: 0rem 5rem;\r\n  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);\r\n \r\n  }\r\n\r\n\r\n\r\n.brod[_ngcontent-%COMP%]{\r\nborder:black solid 5px;\r\nbox-shadow: 0 4px 8px 0 grey(0, 0, 0, 0.2);\r\nwidth: 50%;\r\n  }\r\n\r\n\r\n\r\n.img[_ngcontent-%COMP%] {\r\n    min-height: 35vh;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n  }\r\n\r\n\r\n\r\n.price[_ngcontent-%COMP%] {\r\n    color: black;\r\n    font-size: 22px;\r\n    text-align: center;\r\n    border:gainsboro solid 2px;\r\n    background :rgb(161, 221, 161);\r\n\r\n  }\r\n\r\n\r\n\r\n.rowitme0[_ngcontent-%COMP%]{\r\n    background: #FFD700;\r\n    color: #000;\r\n  }\r\n\r\n\r\n\r\n.card[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\r\n    border: none;\r\n    outline: 0;\r\n    padding: 12px;\r\n    color: white;\r\n    background-color: #000;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    width: 100%;\r\n    font-size: 18px;\r\n  }\r\n\r\n\r\n\r\n.row[_ngcontent-%COMP%]{\r\n    margin: auto;\r\n  }\r\n\r\n\r\n\r\n.timer[_ngcontent-%COMP%]{\r\n    color:red;\r\n  }\r\n\r\n\r\n\r\nsub[_ngcontent-%COMP%]{\r\n    color:red;\r\n  }\r\n\r\n\r\n\r\n.h1[_ngcontent-%COMP%] {\r\n    font-size: 3rem;\r\n    transition: all 0.75s ease-out;\r\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9wYWdlLXByb2R1Y3RzL3BhZ2UtcHJvZHVjdHMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDLGlCQUFpQjtDQUNqQixRQUFRO0NBQ1IsT0FBTztDQUNQLCtCQUErQjtJQUM1QixxQ0FBcUM7SUFDckMsWUFBWTtDQUNmLGlCQUFpQjtDQUNqQixrQkFBa0I7QUFDbkI7Ozs7QUFJQTtFQUNFLDZCQUE2QjtFQUM3Qiw0QkFBNEI7RUFDNUIsZ0JBQWdCO0VBQ2hCLFlBQVk7RUFDWixtQkFBbUI7RUFDbkIsa0JBQWtCO0VBQ2xCLDJFQUEyRTs7RUFFM0U7Ozs7QUFDQTtBQUNGLHNCQUFzQjtBQUN0QiwwQ0FBMEM7QUFDMUMsVUFBVTtFQUNSOzs7O0FBRUE7SUFDRSxnQkFBZ0I7SUFDaEIsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQix1QkFBdUI7RUFDekI7Ozs7QUFFQTtJQUNFLFlBQVk7SUFDWixlQUFlO0lBQ2Ysa0JBQWtCO0lBQ2xCLDBCQUEwQjtJQUMxQiw4QkFBOEI7O0VBRWhDOzs7O0FBQ0E7SUFDRSxtQkFBbUI7SUFDbkIsV0FBVztFQUNiOzs7O0FBQ0E7SUFDRSxZQUFZO0lBQ1osVUFBVTtJQUNWLGFBQWE7SUFDYixZQUFZO0lBQ1osc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQixlQUFlO0lBQ2YsV0FBVztJQUNYLGVBQWU7RUFDakI7Ozs7QUFDQTtJQUNFLFlBQVk7RUFDZDs7OztBQUNBO0lBQ0UsU0FBUztFQUNYOzs7O0FBQ0E7SUFDRSxTQUFTO0VBQ1g7Ozs7QUFFQTtJQUNFLGVBQWU7SUFDZiw4QkFBOEI7RUFDaEMiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3BhZ2UtcHJvZHVjdHMvcGFnZS1wcm9kdWN0cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJveHtcclxuXHRwb3NpdGlvbjphYnNvbHV0ZTtcclxuXHRsZWZ0OjUwJTtcclxuXHR0b3A6NTAlO1xyXG5cdHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsLTUwJSk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuODkpO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG5cdGJvcmRlci1yYWRpdXM6M3B4O1xyXG5cdHBhZGRpbmc6NzBweCAxMDBweDtcclxufVxyXG5cclxuXHJcblxyXG4uY2FyZCB7XHJcbiAgYmFja2dyb3VuZDpyZ2IoMjE2LCAyMDMsIDIwMyk7XHJcbiAgdHJhbnNmb3JtLXN0eWxlOiBwcmVzZXJ2ZS0zZDtcclxuICBtaW4taGVpZ2h0OiA4MHZoO1xyXG4gIHdpZHRoOiAzMHJlbTtcclxuICBib3JkZXItcmFkaXVzOiA1MHB4O1xyXG4gIHBhZGRpbmc6IDByZW0gNXJlbTtcclxuICBib3gtc2hhZG93OiAwIDIwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMiksIDBweCAwcHggNTBweCByZ2JhKDAsIDAsIDAsIDAuMik7XHJcbiBcclxuICB9XHJcbiAgLmJyb2R7XHJcbmJvcmRlcjpibGFjayBzb2xpZCA1cHg7XHJcbmJveC1zaGFkb3c6IDAgNHB4IDhweCAwIGdyZXkoMCwgMCwgMCwgMC4yKTtcclxud2lkdGg6IDUwJTtcclxuICB9XHJcblxyXG4gIC5pbWcge1xyXG4gICAgbWluLWhlaWdodDogMzV2aDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgfVxyXG4gIFxyXG4gIC5wcmljZSB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICBmb250LXNpemU6IDIycHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBib3JkZXI6Z2FpbnNib3JvIHNvbGlkIDJweDtcclxuICAgIGJhY2tncm91bmQgOnJnYigxNjEsIDIyMSwgMTYxKTtcclxuXHJcbiAgfVxyXG4gIC5yb3dpdG1lMHtcclxuICAgIGJhY2tncm91bmQ6ICNGRkQ3MDA7XHJcbiAgICBjb2xvcjogIzAwMDtcclxuICB9XHJcbiAgLmNhcmQgYnV0dG9uIHtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIG91dGxpbmU6IDA7XHJcbiAgICBwYWRkaW5nOiAxMnB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gIH1cclxuICAucm93e1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gIH1cclxuICAudGltZXJ7XHJcbiAgICBjb2xvcjpyZWQ7XHJcbiAgfVxyXG4gIHN1YntcclxuICAgIGNvbG9yOnJlZDtcclxuICB9XHJcblxyXG4gIC5oMSB7XHJcbiAgICBmb250LXNpemU6IDNyZW07XHJcbiAgICB0cmFuc2l0aW9uOiBhbGwgMC43NXMgZWFzZS1vdXQ7XHJcbiAgfVxyXG5cclxuIl19 */"]
     });
     /*@__PURE__*/
@@ -6756,11 +6762,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: src_app_services_products_service__WEBPACK_IMPORTED_MODULE_1__["ProductsService"]
+          type: src_app_services_products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
         }, {
-          type: src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_3__["LogingService"]
+          type: src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_4__["LogingService"]
         }];
       }, null);
     })();
@@ -6888,31 +6894,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! src/app/services/loging.service */
     "./src/app/services/loging.service.ts");
     /* harmony import */
 
 
-    var src_app_services_products_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var src_app_services_products_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! src/app/services/products.service */
     "./src/app/services/products.service.ts");
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ../spinner/spinner.component */
     "./src/app/components/spinner/spinner.component.ts");
 
@@ -7072,7 +7084,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", myPro_r14.userId == ctx_r13.userid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", myPro_r14.userId == ctx_r13.currentUser.id);
       }
     }
 
@@ -7090,13 +7102,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r9.auction);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r9.AuctionUser);
       }
     }
 
     function UserPageComponent_ng_template_3_div_59_div_1_ng_container_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
@@ -7111,13 +7123,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 46);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UserPageComponent_ng_template_3_div_59_div_1_ng_container_1_Template_button_click_4_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r27);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r26);
 
           var myProduct_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
 
-          var ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r25.pageId(myProduct_r18.id);
+          return ctx_r24.pageId(myProduct_r18.id);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Show Now");
@@ -7127,13 +7139,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 47);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UserPageComponent_ng_template_3_div_59_div_1_ng_container_1_Template_button_click_6_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r27);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r26);
 
           var myProduct_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
 
-          var ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r28.pageId(myProduct_r18.id);
+          return ctx_r27.pageId(myProduct_r18.id);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Go To payment");
@@ -7178,7 +7190,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function UserPageComponent_ng_template_3_div_59_div_1_ng_template_2_div_0_Template(rf, ctx) {
       if (rf & 1) {
-        var _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 49);
 
@@ -7197,13 +7209,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 50);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UserPageComponent_ng_template_3_div_59_div_1_ng_template_2_div_0_Template_button_click_5_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r34);
 
           var myProduct_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3).$implicit;
 
-          var ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r33.pageId(myProduct_r18.id);
+          return ctx_r32.pageId(myProduct_r18.id);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "You lost");
@@ -7236,9 +7248,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 2) {
         var myPro_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+        var ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", myPro_r20.userId == ctx_r24.userid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", myPro_r20.userId == ctx_r23.currentUser.id);
       }
     }
 
@@ -7255,15 +7267,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       if (rf & 2) {
         var myPro_r20 = ctx.$implicit;
-        var i_r21 = ctx.index;
 
-        var _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](3);
+        var _r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](3);
 
-        var ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+        var myProduct_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", myPro_r20.userId == ctx_r19.userid && i_r21 == 0)("ngIfElse", _r23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", myPro_r20.price == myProduct_r18.price)("ngIfElse", _r22);
       }
     }
 
@@ -7281,7 +7292,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r10.auction);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r10.AuctionUser);
       }
     }
 
@@ -7556,7 +7567,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.logingSer = logingSer;
         this.productsSer = productsSer;
         this._router = _router;
-        this.auction = [];
         this.myproducts = [];
         this.allproduct = [];
         this.value = '';
@@ -7567,65 +7577,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this8 = this;
 
-          var arrayProducts;
-          arrayProducts = this.productsSer.getAllProducts();
-          console.log("ngOnInit Products work");
-          this.allproducts().subscribe(function (p) {
-            _this8.auction = _this8.productsSer.getAuctionByuserId(_this8.userid);
-            arrayProducts = arrayProducts.concat(p);
-            _this8.allproduct = arrayProducts;
-            console.log("this", _this8.allproduct);
+          var sortById = function sortById(data) {
+            data.sort(function (a, b) {
+              return b.price - a.price;
+            });
+            ;
+          };
 
-            var uIdproduct = _this8.auction.filter(function (obj, index, self) {
+          this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+          console.log("%c ".concat(this.currentUser.username), 'color:red');
+          this.productsSer.getAuctionByUserId(this.currentUser.id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(sortById)).subscribe(function (res) {
+            _this8.AuctionUser = res;
+
+            var uIdproduct = _this8.AuctionUser.filter(function (obj, index, self) {
               return self.findIndex(function (o) {
                 return o.pruductId === obj.pruductId;
               }) === index;
             });
 
-            uIdproduct.forEach(function (id) {
-              var _this8$myproducts;
-
-              (_this8$myproducts = _this8.myproducts).push.apply(_this8$myproducts, _toConsumableArray(_this8.allproduct.filter(function (p) {
-                return p.id == id.pruductId;
-              })));
-
-              console.log('this.myproducts', _this8.myproducts);
+            uIdproduct.forEach(function (pruduct) {
+              _this8.productsSer.getById(pruduct.pruductId).subscribe(function (pruduct) {
+                _this8.myproducts.push(pruduct);
+              });
             });
-            console.log(arrayProducts);
           });
-          this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-          console.log("%c ".concat(this.currentUser.username), 'color:red');
-          this.userid = this.currentUser.id; // this.myproducts = this.productsSer.productsUser(this.currentUser.id)
-
-          console.log("this.auction", this.auction);
-          this.auction.sort(function (a, b) {
-            return b.price - a.price;
-          }); // console.log("this.myproducts", this.myproducts);
-        }
-      }, {
-        key: "allproducts",
-        value: function allproducts() {
-          return this.productsSer.all(); // .subscribe((p: Products) => {
-          //   arrayProducts = arrayProducts.concat(p)
-          //   console.log(arrayProducts);
-          // })
-          // return this.allproduct = arrayProducts
-          // const array = this.productsSer.getAllProducts().filter((p: Products) => p.id == id)
-          // if (array !== null) {
-          //   return array
-          // }
-          // const arrayapi = this.productsSer.all().subscribe((data: Products) => {
-          //   return data.id == id
-          // })
-          // return arrayapi
-        }
-      }, {
-        key: "getproductById",
-        value: function getproductById(id) {
-          var array = this.allproduct.filter(function (p) {
-            return p.id == id;
-          });
-          return array;
         }
       }, {
         key: "pageId",
@@ -7661,7 +7636,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     UserPageComponent.ɵfac = function UserPageComponent_Factory(t) {
-      return new (t || UserPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_1__["LogingService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]));
+      return new (t || UserPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_2__["LogingService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_products_service__WEBPACK_IMPORTED_MODULE_3__["ProductsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]));
     };
 
     UserPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -7687,7 +7662,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.currentUser.email == ctx.value)("ngIfThen", _r3)("ngIfElse", _r1);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_5__["SpinnerComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_6__["SpinnerComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"]],
       styles: [".style[_ngcontent-%COMP%]{\r\n    width: 100%;\r\n     padding: 2px;\r\n      background: rgb(192, 198, 209);\r\n       width: auto; height: 5rem;\r\n       padding: 15px;\r\n\r\n}\r\n.card-body[_ngcontent-%COMP%]{\r\n    background: rgb(155, 182, 212);\r\n}\r\n.box[_ngcontent-%COMP%]{\r\n\tposition:absolute;\r\n\tleft:50%;\r\n\ttop:30%;\r\n\ttransform: translate(-50%,-50%);\r\n    background-color: rgba(0, 0, 0, 0.89);\r\n    color: white;\r\n\tborder-radius:3px;\r\n    padding:70px 100px;\r\n    text-align: center;\r\n}\r\n.Youlost[_ngcontent-%COMP%]{\r\n    padding: 35px;\r\n    background-color: rgba(0, 0, 0, 0.89);\r\n    color: white;\r\n\tborder-radius:3px;\r\n}\r\n.body[_ngcontent-%COMP%]{\r\n    min-height:50vh;\r\n\r\n}\r\ninput[_ngcontent-%COMP%]{\r\n    border-radius: 25px;\r\n    border: 2px solid #FFD700;\r\n}\r\n.winner[_ngcontent-%COMP%] {\r\n    border: wheat solid 3px;\r\n    padding: 10px;\r\n    margin: 25px;\r\n    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),\r\n                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy91c2VyLXBhZ2UvdXNlci1wYWdlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0tBQ1YsWUFBWTtNQUNYLDhCQUE4QjtPQUM3QixXQUFXLEVBQUUsWUFBWTtPQUN6QixhQUFhOztBQUVwQjtBQUNBO0lBQ0ksOEJBQThCO0FBQ2xDO0FBQ0E7Q0FDQyxpQkFBaUI7Q0FDakIsUUFBUTtDQUNSLE9BQU87Q0FDUCwrQkFBK0I7SUFDNUIscUNBQXFDO0lBQ3JDLFlBQVk7Q0FDZixpQkFBaUI7SUFDZCxrQkFBa0I7SUFDbEIsa0JBQWtCO0FBQ3RCO0FBRUE7SUFDSSxhQUFhO0lBQ2IscUNBQXFDO0lBQ3JDLFlBQVk7Q0FDZixpQkFBaUI7QUFDbEI7QUFDQTtJQUNJLGVBQWU7O0FBRW5CO0FBQ0E7SUFDSSxtQkFBbUI7SUFDbkIseUJBQXlCO0FBQzdCO0FBRUE7SUFDSSx1QkFBdUI7SUFDdkIsYUFBYTtJQUNiLFlBQVk7SUFDWjtzSUFDa0k7QUFDdEkiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3VzZXItcGFnZS91c2VyLXBhZ2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsZXtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgIHBhZGRpbmc6IDJweDtcclxuICAgICAgYmFja2dyb3VuZDogcmdiKDE5MiwgMTk4LCAyMDkpO1xyXG4gICAgICAgd2lkdGg6IGF1dG87IGhlaWdodDogNXJlbTtcclxuICAgICAgIHBhZGRpbmc6IDE1cHg7XHJcblxyXG59XHJcbi5jYXJkLWJvZHl7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2IoMTU1LCAxODIsIDIxMik7XHJcbn1cclxuLmJveHtcclxuXHRwb3NpdGlvbjphYnNvbHV0ZTtcclxuXHRsZWZ0OjUwJTtcclxuXHR0b3A6MzAlO1xyXG5cdHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsLTUwJSk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuODkpO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG5cdGJvcmRlci1yYWRpdXM6M3B4O1xyXG4gICAgcGFkZGluZzo3MHB4IDEwMHB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG4uWW91bG9zdHtcclxuICAgIHBhZGRpbmc6IDM1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuODkpO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG5cdGJvcmRlci1yYWRpdXM6M3B4O1xyXG59XHJcbi5ib2R5e1xyXG4gICAgbWluLWhlaWdodDo1MHZoO1xyXG5cclxufVxyXG5pbnB1dHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDI1cHg7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCAjRkZENzAwO1xyXG59XHJcblxyXG4ud2lubmVyIHtcclxuICAgIGJvcmRlcjogd2hlYXQgc29saWQgM3B4O1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICAgIG1hcmdpbjogMjVweDtcclxuICAgIGJhY2tncm91bmQ6IHJhZGlhbC1ncmFkaWVudChlbGxpcHNlIGZhcnRoZXN0LWNvcm5lciBhdCByaWdodCBib3R0b20sICNGRURCMzcgMCUsICNGREI5MzEgOCUsICM5Zjc5MjggMzAlLCAjOEE2RTJGIDQwJSwgdHJhbnNwYXJlbnQgODAlKSxcclxuICAgICAgICAgICAgICAgIHJhZGlhbC1ncmFkaWVudChlbGxpcHNlIGZhcnRoZXN0LWNvcm5lciBhdCBsZWZ0IHRvcCwgI0ZGRkZGRiAwJSwgI0ZGRkZBQyA4JSwgI0QxQjQ2NCAyNSUsICM1ZDRhMWYgNjIuNSUsICM1ZDRhMWYgMTAwJSk7XHJcbn1cclxuIl19 */"]
     });
     /*@__PURE__*/
@@ -7702,11 +7677,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_1__["LogingService"]
+          type: src_app_services_loging_service__WEBPACK_IMPORTED_MODULE_2__["LogingService"]
         }, {
-          type: src_app_services_products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"]
+          type: src_app_services_products_service__WEBPACK_IMPORTED_MODULE_3__["ProductsService"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
         }];
       }, null);
     })();
@@ -7993,7 +7968,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this._router = _router;
         this.apiServer = apiServer;
-        this.currentUser$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
+        this.currentUser$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](JSON.parse(localStorage.getItem('currentUser')));
         this.arrayUsers = [];
         this.arrayUsers = [{
           firstName: "chaim",
@@ -8189,6 +8164,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.apiService.requestBady("/products", 'POST', product);
         }
       }, {
+        key: "addAuction",
+        value: function addAuction(auction) {
+          return this.apiService.requestBady("/auction", 'POST', auction);
+        }
+      }, {
         key: "all",
         value: function all() {
           return this.apiService.request('/products', 'GET');
@@ -8202,6 +8182,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "getById",
         value: function getById(id) {
           return this.apiService.request("/products/".concat(id), 'GET');
+        }
+      }, {
+        key: "getAuctionByProductId",
+        value: function getAuctionByProductId(id) {
+          return this.apiService.request("/auction/".concat(id), 'GET');
+        }
+      }, {
+        key: "getAuctionByUserId",
+        value: function getAuctionByUserId(id) {
+          return this.apiService.request("/auction/user/".concat(id), 'GET');
         }
       }, {
         key: "delete",
@@ -8255,8 +8245,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.userSer.updateSubject(1);
           var user = JSON.parse(localStorage.getItem('currentUser'));
           var productId = id;
-          var date = new Date();
-          this.auction.push({
+          var date = new Date(); // this.auction.push({ pruductId: productId, userId: user.id, price: sum, time: date, username: user.username })
+
+          this.addAuction({
             pruductId: productId,
             userId: user.id,
             price: sum,
@@ -8266,14 +8257,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.editProducts({
             price: sum
           }, productId);
-        }
-      }, {
-        key: "getAuctionByProductId",
-        value: function getAuctionByProductId(productId) {
-          return this.auction.filter(function (auction) {
-            return auction.pruductId == productId;
-          });
-        }
+        } // getAuctionByProductId(productId: string) {
+        // return this.auction.filter(auction => auction.pruductId == productId);
+        // }
+
       }, {
         key: "getAuctionByuserId",
         value: function getAuctionByuserId(userId) {
@@ -8481,6 +8468,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var environment = {
       production: false,
+      // apiUrl: 'http://localhost:3000'
       apiUrl: ''
     };
     /*
